@@ -1,0 +1,409 @@
+{
+  "version": 1,
+  "id": "cw-die-maschine-solo",
+  "name": "Die Maschine",
+  "title": "Call of Duty: Black Ops Cold War",
+  "release": "2020 · Solo · Crash Site approach",
+  "spawn": "yard",
+  "starting_points": 500,
+  "flags": [
+    "power",
+    "jug",
+    "speed",
+    "forged",
+    "packed",
+    "hydro",
+    "cyclotron",
+    "aether",
+    "part",
+    "marker_crash",
+    "marker_pond"
+  ],
+  "perk_pricing": {
+    "flags": [
+      "jug",
+      "speed"
+    ],
+    "increment": 500,
+    "other_max": 8
+  },
+  "goals": [
+    {
+      "id": "power",
+      "name": "Activate power",
+      "zone": "main_power",
+      "price": 0
+    },
+    {
+      "id": "jug",
+      "name": "Juggernog",
+      "zone": "crash",
+      "price": 2500
+    },
+    {
+      "id": "speed",
+      "name": "Speed Cola",
+      "zone": "medical",
+      "price": 2500
+    },
+    {
+      "id": "forged",
+      "name": "Forge Pack-a-Punch",
+      "zone": "accelerator",
+      "price": 0
+    },
+    {
+      "id": "packed",
+      "name": "Pack-a-Punch tier I",
+      "zone": "accelerator",
+      "price": 5000
+    }
+  ],
+  "zones": [
+    {
+      "id": "yard",
+      "name": "Yard",
+      "x": 85,
+      "y": 83
+    },
+    {
+      "id": "outpost",
+      "name": "Omega Outpost",
+      "x": 251,
+      "y": 83
+    },
+    {
+      "id": "bedroom",
+      "name": "Bedroom",
+      "x": 424,
+      "y": 83
+    },
+    {
+      "id": "crash",
+      "name": "Crash Site",
+      "x": 605,
+      "y": 83
+    },
+    {
+      "id": "pond",
+      "name": "Pond",
+      "x": 758,
+      "y": 83
+    },
+    {
+      "id": "tunnel",
+      "name": "Tunnel",
+      "x": 605,
+      "y": 183
+    },
+    {
+      "id": "control",
+      "name": "Control Room",
+      "x": 424,
+      "y": 183
+    },
+    {
+      "id": "medical",
+      "name": "Medical Bay",
+      "x": 243,
+      "y": 183
+    },
+    {
+      "id": "weapons",
+      "name": "Weapons Lab",
+      "x": 424,
+      "y": 309
+    },
+    {
+      "id": "accelerator",
+      "name": "Particle Accelerator",
+      "x": 243,
+      "y": 309
+    },
+    {
+      "id": "main_power",
+      "name": "Main Power",
+      "x": 73,
+      "y": 309
+    }
+  ],
+  "edges": [
+    {
+      "id": "yard_outpost",
+      "from": "yard",
+      "to": "outpost",
+      "price": 500,
+      "seconds": 5,
+      "bidirectional": true
+    },
+    {
+      "id": "stairs",
+      "from": "outpost",
+      "to": "bedroom",
+      "price": 750,
+      "seconds": 6,
+      "bidirectional": true
+    },
+    {
+      "id": "bedroom_exit",
+      "from": "bedroom",
+      "to": "crash",
+      "price": 1000,
+      "seconds": 7,
+      "bidirectional": false
+    },
+    {
+      "id": "crash_tunnel",
+      "from": "crash",
+      "to": "tunnel",
+      "price": 1250,
+      "seconds": 7,
+      "bidirectional": true
+    },
+    {
+      "id": "facility",
+      "from": "tunnel",
+      "to": "control",
+      "price": 0,
+      "seconds": 6,
+      "bidirectional": true
+    },
+    {
+      "id": "medical_debris",
+      "from": "control",
+      "to": "medical",
+      "price": 1500,
+      "seconds": 6,
+      "bidirectional": true
+    },
+    {
+      "id": "medical_gate",
+      "from": "medical",
+      "to": "accelerator",
+      "price": 1500,
+      "seconds": 7,
+      "bidirectional": true
+    },
+    {
+      "id": "weapons_debris",
+      "from": "control",
+      "to": "weapons",
+      "price": 1500,
+      "seconds": 7,
+      "bidirectional": true
+    },
+    {
+      "id": "weapons_gate",
+      "from": "weapons",
+      "to": "accelerator",
+      "price": 1500,
+      "seconds": 8,
+      "bidirectional": true
+    },
+    {
+      "id": "power_door",
+      "from": "accelerator",
+      "to": "main_power",
+      "price": 1750,
+      "seconds": 5,
+      "bidirectional": true
+    },
+    {
+      "id": "pond_pass",
+      "from": "crash",
+      "to": "pond",
+      "price": 0,
+      "seconds": 6,
+      "bidirectional": true,
+      "requires": [
+        "power"
+      ]
+    },
+    {
+      "id": "yard_stairs",
+      "from": "main_power",
+      "to": "yard",
+      "price": 0,
+      "seconds": 9,
+      "bidirectional": true,
+      "requires": [
+        "power"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "switch",
+      "name": "Turn on main power",
+      "at": "main_power",
+      "cost": 0,
+      "seconds": 2,
+      "gives": [
+        "power"
+      ],
+      "requires": [],
+      "absent": [
+        "power"
+      ]
+    },
+    {
+      "id": "jug_machine",
+      "name": "Buy Juggernog",
+      "at": "crash",
+      "cost": 2500,
+      "seconds": 3,
+      "gives": [
+        "jug"
+      ],
+      "requires": [],
+      "absent": [
+        "jug",
+        "aether"
+      ]
+    },
+    {
+      "id": "speed_machine",
+      "name": "Buy Speed Cola",
+      "at": "medical",
+      "cost": 2500,
+      "seconds": 3,
+      "gives": [
+        "speed"
+      ],
+      "requires": [
+        "power"
+      ],
+      "absent": [
+        "speed",
+        "aether"
+      ]
+    },
+    {
+      "id": "hydro_terminal",
+      "name": "Activate the Hydro-Energy terminal",
+      "at": "accelerator",
+      "cost": 0,
+      "seconds": 4,
+      "gives": [
+        "hydro"
+      ],
+      "requires": [
+        "power"
+      ],
+      "absent": [
+        "hydro"
+      ]
+    },
+    {
+      "id": "cyclotron_terminal",
+      "name": "Activate the Cyclotron terminal",
+      "at": "accelerator",
+      "cost": 0,
+      "seconds": 4,
+      "gives": [
+        "cyclotron"
+      ],
+      "requires": [
+        "power"
+      ],
+      "absent": [
+        "cyclotron"
+      ]
+    },
+    {
+      "id": "enter",
+      "name": "Enter the Dark Aether anomaly",
+      "at": "accelerator",
+      "cost": 0,
+      "seconds": 5,
+      "gives": [
+        "aether"
+      ],
+      "requires": [
+        "power",
+        "hydro",
+        "cyclotron"
+      ],
+      "absent": [
+        "aether",
+        "forged",
+        "part"
+      ],
+      "reserve": 500,
+      "reserve_until": "forge"
+    },
+    {
+      "id": "crash_tube",
+      "name": "Ride marked tunnel and collect the part",
+      "at": "crash",
+      "cost": 500,
+      "seconds": 9,
+      "gives": [
+        "part"
+      ],
+      "requires": [
+        "aether",
+        "marker_crash"
+      ],
+      "absent": [
+        "part"
+      ],
+      "to": "medical"
+    },
+    {
+      "id": "pond_tube",
+      "name": "Ride marked tunnel and collect the part",
+      "at": "pond",
+      "cost": 500,
+      "seconds": 9,
+      "gives": [
+        "part"
+      ],
+      "requires": [
+        "aether",
+        "marker_pond"
+      ],
+      "absent": [
+        "part"
+      ],
+      "to": "weapons"
+    },
+    {
+      "id": "forge",
+      "name": "Forge the Pack-a-Punch machine",
+      "at": "accelerator",
+      "cost": 0,
+      "seconds": 5,
+      "gives": [
+        "forged"
+      ],
+      "requires": [
+        "part",
+        "aether"
+      ],
+      "absent": [
+        "forged"
+      ],
+      "takes": [
+        "part",
+        "aether"
+      ]
+    },
+    {
+      "id": "upgrade",
+      "name": "Upgrade weapon to tier I",
+      "at": "accelerator",
+      "cost": 5000,
+      "seconds": 3,
+      "gives": [
+        "packed"
+      ],
+      "requires": [
+        "forged"
+      ],
+      "absent": [
+        "packed"
+      ]
+    }
+  ]
+}

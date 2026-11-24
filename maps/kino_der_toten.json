@@ -1,0 +1,335 @@
+{
+  "version": 1,
+  "id": "bo1-kino-solo",
+  "name": "Kino der Toten",
+  "title": "Call of Duty: Black Ops",
+  "release": "2010 · Original map · Solo",
+  "spawn": "lobby",
+  "starting_points": 500,
+  "flags": [
+    "power",
+    "jug",
+    "speed",
+    "packed",
+    "primed",
+    "linked"
+  ],
+  "goals": [
+    {
+      "id": "power",
+      "name": "Activate power",
+      "zone": "stage",
+      "price": 0
+    },
+    {
+      "id": "jug",
+      "name": "Juggernog",
+      "zone": "theater",
+      "price": 2500
+    },
+    {
+      "id": "speed",
+      "name": "Speed Cola",
+      "zone": "foyer",
+      "price": 3000
+    },
+    {
+      "id": "packed",
+      "name": "Pack-a-Punch",
+      "zone": "projector",
+      "price": 5000
+    }
+  ],
+  "zones": [
+    {
+      "id": "lobby",
+      "name": "Lobby",
+      "x": 414,
+      "y": 321
+    },
+    {
+      "id": "upper",
+      "name": "Upper Hall",
+      "x": 665,
+      "y": 321
+    },
+    {
+      "id": "foyer",
+      "name": "Foyer",
+      "x": 700,
+      "y": 201
+    },
+    {
+      "id": "dressing",
+      "name": "Dressing Room",
+      "x": 665,
+      "y": 68
+    },
+    {
+      "id": "stage",
+      "name": "Stage",
+      "x": 414,
+      "y": 59
+    },
+    {
+      "id": "back",
+      "name": "Back Room",
+      "x": 166,
+      "y": 68
+    },
+    {
+      "id": "alley",
+      "name": "Alley",
+      "x": 128,
+      "y": 201
+    },
+    {
+      "id": "lower",
+      "name": "Lower Hall",
+      "x": 166,
+      "y": 321
+    },
+    {
+      "id": "theater",
+      "name": "Theater",
+      "x": 414,
+      "y": 201
+    },
+    {
+      "id": "projector",
+      "name": "Projector Room",
+      "x": 540,
+      "y": 130
+    }
+  ],
+  "edges": [
+    {
+      "id": "stairs",
+      "from": "lobby",
+      "to": "upper",
+      "price": 750,
+      "seconds": 7,
+      "bidirectional": true
+    },
+    {
+      "id": "foyer_door",
+      "from": "upper",
+      "to": "foyer",
+      "price": 1000,
+      "seconds": 8,
+      "bidirectional": true
+    },
+    {
+      "id": "dressing_door",
+      "from": "foyer",
+      "to": "dressing",
+      "price": 1250,
+      "seconds": 7,
+      "bidirectional": true
+    },
+    {
+      "id": "stage_right",
+      "from": "dressing",
+      "to": "stage",
+      "price": 1250,
+      "seconds": 6,
+      "bidirectional": true
+    },
+    {
+      "id": "lower_door",
+      "from": "lobby",
+      "to": "lower",
+      "price": 750,
+      "seconds": 5,
+      "bidirectional": true
+    },
+    {
+      "id": "alley_door",
+      "from": "lower",
+      "to": "alley",
+      "price": 1000,
+      "seconds": 7,
+      "bidirectional": true
+    },
+    {
+      "id": "back_door",
+      "from": "alley",
+      "to": "back",
+      "price": 1250,
+      "seconds": 7,
+      "bidirectional": true
+    },
+    {
+      "id": "stage_left",
+      "from": "back",
+      "to": "stage",
+      "price": 1250,
+      "seconds": 6,
+      "bidirectional": true
+    },
+    {
+      "id": "curtain",
+      "from": "stage",
+      "to": "theater",
+      "price": 0,
+      "seconds": 5,
+      "bidirectional": true,
+      "requires": [
+        "power"
+      ]
+    },
+    {
+      "id": "front",
+      "from": "theater",
+      "to": "lobby",
+      "price": 0,
+      "seconds": 5,
+      "bidirectional": true,
+      "requires": [
+        "power"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "switch",
+      "name": "Activate power",
+      "at": "stage",
+      "gives": [
+        "power"
+      ],
+      "absent": [
+        "power"
+      ],
+      "seconds": 2,
+      "cost": 0
+    },
+    {
+      "id": "jug_machine",
+      "name": "Buy Juggernog",
+      "at": "theater",
+      "requires": [
+        "power"
+      ],
+      "absent": [
+        "jug"
+      ],
+      "gives": [
+        "jug"
+      ],
+      "cost": 2500,
+      "seconds": 3
+    },
+    {
+      "id": "speed_machine",
+      "name": "Buy Speed Cola",
+      "at": "foyer",
+      "requires": [
+        "power"
+      ],
+      "absent": [
+        "speed"
+      ],
+      "gives": [
+        "speed"
+      ],
+      "cost": 3000,
+      "seconds": 3
+    },
+    {
+      "id": "prime",
+      "name": "Initialize the stage teleporter",
+      "at": "stage",
+      "requires": [
+        "power"
+      ],
+      "absent": [
+        "primed",
+        "linked",
+        "packed"
+      ],
+      "gives": [
+        "primed"
+      ],
+      "cost": 0,
+      "seconds": 2,
+      "needs_ready": true
+    },
+    {
+      "id": "link",
+      "name": "Link the lobby mainframe",
+      "at": "lobby",
+      "requires": [
+        "power",
+        "primed"
+      ],
+      "gives": [
+        "linked"
+      ],
+      "takes": [
+        "primed"
+      ],
+      "cost": 0,
+      "seconds": 2
+    },
+    {
+      "id": "ride",
+      "name": "Teleport to the projector room",
+      "at": "stage",
+      "to": "projector",
+      "requires": [
+        "power",
+        "linked"
+      ],
+      "absent": [
+        "packed"
+      ],
+      "takes": [
+        "linked"
+      ],
+      "cost": 0,
+      "reserve": 5000,
+      "seconds": 5
+    },
+    {
+      "id": "upgrade",
+      "name": "Use Pack-a-Punch",
+      "at": "projector",
+      "requires": [
+        "power"
+      ],
+      "absent": [
+        "packed"
+      ],
+      "gives": [
+        "packed"
+      ],
+      "cost": 5000,
+      "seconds": 6
+    },
+    {
+      "id": "return_after",
+      "name": "Wait for return to the lobby",
+      "at": "projector",
+      "to": "lobby",
+      "requires": [
+        "packed"
+      ],
+      "cost": 0,
+      "seconds": 24,
+      "cooldown_after": 60
+    },
+    {
+      "id": "return_empty",
+      "name": "Wait for return to the lobby",
+      "at": "projector",
+      "to": "lobby",
+      "absent": [
+        "packed"
+      ],
+      "cost": 0,
+      "seconds": 30,
+      "cooldown_after": 60
+    }
+  ]
+}
